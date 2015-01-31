@@ -1,6 +1,6 @@
 
 library('fpc')
-source('C:/Users/xman/Copy/R/FileManager.R')
+source('C:/Users/x-man/Copy/R/Defect_Prediction/FileManager.R')
 # get cluster info ...
 getClustersUsingDbScan<-function(data,eps){
 	dbcluster<-dbscan(data,eps); 
@@ -32,11 +32,29 @@ grouplingCsvFileUsingClusterInfo<-function(mainData, cluster){
 		}
 		
 	}
-	writeDataFrameTo(jointClusterData,sourcePath[["dataPath"]],'11111.csv')
+	if(nrow(jointClusterData)>1){
+		writeDataFrameTo(jointClusterData,sourcePath[["dataPath"]],'11111.csv')
+	}
+	
 	return(jointClusters)
 }
 
-getEpsValue<-function(){
+getEpsValue<-function(dbScanData){
 
+}
+# generate eps value...
+getEpsValueFromAverageDistanceOfEachPoint<-function(dbScanData){
+distanceList<-c()
+for(n in 1:(nrow(dbScanData)-1)){
+	for(i in (n+1):(nrow(dbScanData)-1)){
+		firstItem<-dbScanData[n,]
+		secendItem<-dbScanData[i,]
+		distance<-sqrt((firstItem[1]-secendItem[1])^2+(firstItem[2]-secendItem[2])^2)
+	  distanceInfo<-c(firstItem[3],distance)
+	  distanceList<-rbind(distanceList,distanceInfo)
+	}
+}
+	#return( mean(distanceList[,2]))
+return(distanceList)
 }
 

@@ -1,11 +1,10 @@
 
-source('C:/Users/xman/Copy/R/multiplyCoefficient.R')
-source('C:/Users/xman/Copy/R/DbScanCluster.R')
-source('C:/Users/xman/Copy/R/datasetManager.R')
+source('C:/Users/x-man/Copy/R/Defect_Prediction/multiplyCoefficient.R')
+source('C:/Users/x-man/Copy/R/Defect_Prediction/DbScanCluster.R')
+source('C:/Users/x-man/Copy/R/Defect_Prediction/datasetManager.R')
 
-sourcePath <- c(filePath="C:/Users/xman/Copy/R/Data/jedit-3.2.csv", dataPath="C:/Users/xman/Copy/R/Data")
-dbScanParam<-c(eps=4.344)
-
+sourcePath <- c(filePath="C:/Users/x-man/Copy/R/Defect_Prediction/Data/jedit-3.2.csv", dataPath="C:/Users/x-man/Copy/R/Defect_Prediction/Data")
+dbScanParam<-c(eps=4.3434)
 # predict defects using ... DBScan...and 
 predictDefect<-function(){
 	#loading a Csv File...
@@ -15,13 +14,16 @@ predictDefect<-function(){
 	dataTrain<-getDataApplicableForDbScan(data$trainset)
 		
 	dbData<-getDbScanData(dataTrain)
-	cluster<-getClustersUsingDbScan(dbData,dbScanParam[['eps']])
+  
+	eps<- getEpsValueFromAverageDistanceOfEachPoint(dbData)
+	
+  cluster<-getClustersUsingDbScan(dbData,dbScanParam[['eps']])
 	
 	# storing each cluster...to file....
 	jointClusterIds<-grouplingCsvFileUsingClusterInfo(data$trainset,cluster)
 	#..............
 	testData<-data$testset
-#	testData<-loadCsvFile('C:/Users/xman/Copy/R/Data/testData.csv')
+#	testData<-loadCsvFile('C:/Users/x-man/Copy/R/Defect_Prediction/Data/testData.csv')
 	testdbData<-getDbScanData(testData)
     #.............
 	predictedCluster<-getPredictedCluster(dbData,dbScanParam[['eps']],testdbData)
