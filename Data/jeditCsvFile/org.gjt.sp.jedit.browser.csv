@@ -1,0 +1,7 @@
+name,Id,wmc,dit,noc,cbo,rfc,lcom,npm,loc,bug
+org.gjt.sp.jedit.browser.BrowserListener,52,2,1,0,4,2,1,2,2,0
+org.gjt.sp.jedit.browser.BrowserPopupMenu,152,5,5,0,14,45,6,1,458,0
+org.gjt.sp.jedit.browser.BrowserView,61,19,5,0,13,77,71,8,498,17
+org.gjt.sp.jedit.browser.FileCellRenderer,144,4,5,0,5,32,0,2,313,4
+org.gjt.sp.jedit.browser.VFSBrowser,13,54,5,0,41,175,1183,25,1425,18
+org.gjt.sp.jedit.browser.VFSFileChooserDialog,116,10,7,0,15,74,17,5,477,4

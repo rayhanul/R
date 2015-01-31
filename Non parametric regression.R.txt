@@ -1,0 +1,542 @@
+##------------------------------------##
+##   Script for Crash Course in R     ##
+##          John Fox                  ##
+##     ESRC Oxford Spring School      ##
+##          May 2005                  ##
+##------------------------------------##
+
+### Introduction
+
+    # Basics
+
+# arithmetic, interacting with the interpreter
+
+    # basic arithmetic operations
+
+2+3
+2-3
+2*3
+2/3
+2^3
+
+
+    # precedence of operators
+        
+4^2-3*2
+(4^2) - (3*2) # use parentheses and spaces to group, clarify
+
+-2--3
+-2 - -3
+
+1 - 6 + 4
+
+2^-3
+
+
+# functions, arguments to functions, obtaining help
+
+log(100)
+log(100, base=10)
+log(100, b=10)
+
+help(log)
+?log
+apropos("log")
+help.search("log")
+
+log(100,10)
+
+"+"(2,3)
+
+# vectors
+
+c(1,2,3,4)  # combine
+
+1:4     # sequence operator
+4:1
+-1:2    # note precedence
+seq(1,4)
+seq(2, 8, by=2)
+seq(0, 1, by=.1)
+seq(0, 1, length=11)
+
+    # vectorized arithmetic
+    
+c(1,2,3,4)/2    
+c(1,2,3,4)/c(4,3,2,1)
+log(c(0.1,1,10,100), 10)
+
+c(1,2,3,4) + c(4,3)
+c(1,2,3,4) + c(4,3,2)
+
+# variables
+
+x <- c(1,2,3,4)
+x
+x/2
+y <- sqrt(x)
+y
+x <- rnorm(100)
+x
+summary(x)  # a "generic" function
+
+    # basic indexing
+
+x[21]  
+x[11:20]
+x[-(11:100)]    # careful here!
+
+z <- x[1:10]
+z
+z < -0.5
+z > 0.5
+z < -0.5 | z > 0.5   # | is vectored "or", & is "and"
+abs(z) > 0.5
+z[abs(z) > 0.5] # indexing by a logical vector
+
+
+# user-defined functions
+
+mean(x)
+sum(x)/length(x)
+
+my.mean <- function(x) sum(x)/length(x)
+my.mean(x)
+my.mean(y)
+my.mean(1:100)
+x
+
+    # Duncan example
+    
+# creating a data frame from data stored in a file
+
+Duncan <- read.table(
+    'http://socserv.socsci.mcmaster.ca/jfox/Courses/Oxford/Duncan.txt', 
+    header=TRUE)
+
+Duncan
+summary(Duncan)
+
+# attaching a data frame
+
+prestige
+
+attach(Duncan)
+prestige
+
+# distributions and bivariate relationships
+
+hist(prestige)
+
+plot(income, education)
+noteworthy <- identify(income, education, row.names(Duncan))
+noteworthy
+row.names(Duncan)[noteworthy]
+
+pairs(cbind(prestige,income,education),
+    panel=function(x,y){
+        points(x,y)
+        abline(lm(y~x), lty=2)
+        lines(lowess(x,y))
+        },
+    diag.panel=function(x){
+        par(new=TRUE)
+        hist(x, main="", axes=FALSE)
+        }
+    )
+
+# fitting a regression
+
+duncan.model <- lm(prestige ~ income + education)
+duncan.model
+summary(duncan.model)
+
+# regression diagnostics
+
+library(car)
+
+hist(rstudent(duncan.model))
+qq.plot(duncan.model, labels=row.names(Duncan), simulate=TRUE)
+    
+plot(hatvalues(duncan.model))
+abline(h = c(2,3)*3/45)
+identify(1:45, hatvalues(duncan.model), row.names(Duncan))
+
+plot(cookd(duncan.model))
+abline(h = 4/(45-2-1))
+identify(1:45, cookd(duncan.model), row.names(Duncan))
+
+av.plots(duncan.model, labels=row.names(Duncan))
+cr.plots(duncan.model)
+
+# refitting the model
+
+which.names(c('minister', 'conductor'), Duncan)
+duncan.model.2 <- update(duncan.model, subset=-c(6, 16))
+summary(duncan.model.2)
+
+
+
+### Data in R
+
+    # Reading data
+
+        # entering data at the keyboard
+
+x <- c(1,2,3,4) # numeric data
+x
+names <-c ('John', 'Georges', 'Mary')   # character data
+names
+v <- c(TRUE, FALSE) # logical data
+v
+
+
+cooperation <- scan()
+    49 64 37 52 68 54
+    61 79 64 29
+    27 58 52 41 30 40 39
+    44 34 44
+
+cooperation
+
+condition <- rep(c("public", "anonymous"), c(10,10))
+condition
+sex <- rep(rep(c("male", "female"), c(5,5)), 2)
+sex
+
+Guyer <- data.frame(cooperation, condition, sex)
+Guyer
+
+        # reading data from a file into a data frame
+
+Prestige <- read.table(file.choose(), header=TRUE)
+Prestige
+
+        # accessing data in a package
+
+library(car)
+data(Duncan)
+Duncan
+
+    # The search path
+
+search()
+prestige
+
+Duncan[,"prestige"]
+
+attach(Duncan)
+prestige
+search()
+
+attach(Prestige)
+search()
+prestige    # prestige in Prestige shadows prestige in Duncan
+
+
+Duncan[,"prestige"]
+
+detach(Prestige)
+search()
+prestige
+
+detach(Duncan)
+
+    # missing data
+
+data(Freedman)
+attach(Freedman)
+Freedman[1:10,]
+
+density
+median(density)
+median(density, na.rm=TRUE)
+
+plot(density, crime)
+identify(density, crime, rownames(Freedman))
+
+log(c(1, 10, NA, 100), base=10)
+
+plot(log(density, base=10), crime)
+
+lm(crime ~ log(density, base=10))
+
+abline(lm(crime ~ log(density, base=10)), lty=2)
+
+good <- complete.cases(density, crime)
+good
+lines(lowess(log(density[good], base=10), crime[good]))
+
+options("na.action")
+
+detach(Freedman)
+Freedman.good <- na.omit(Freedman)
+Freedman.good[1:10,]
+dim(Freedman.good)
+dim(Freedman)
+
+    # numeric variables, character variables, and factors
+
+objects()
+remove(good, Freedman.good)
+
+condition
+is.character(condition)
+
+condition <- as.factor(condition)
+condition
+
+remove(cooperation, condition, sex)
+attach(Guyer)
+
+condition
+is.character(condition)
+is.factor(condition)
+
+summary(Guyer)
+
+
+    # Matrices, arrays, and lists
+
+A <- matrix(1:12, 3, 4)
+A
+
+B <- matrix(c('a','b','c'), 4, 3, byrow=TRUE)
+B
+
+dim(A)
+dim(B)
+
+v <- sample(10,10)
+v
+dim(v)
+
+array.3 <- array(1:24, c(4,3,2))
+array.3
+dim(array.3)
+
+list.1 <- list(mat.1=A, mat.2=B, vec=v)
+list.1
+
+    # Indexing  (time permitting)
+    
+        # vectors
+
+v
+v[2]        # one element
+v[c(4,2,6)] # several elements
+v[c(4,2,4)] # elements may be repeated
+
+v[-c(2,4,6,8,10)]   # omitting elements
+
+names(v) <- letters[1:10]
+v
+names(v)
+v[c('f','i','g')]   # indexing by names
+
+v < 6
+v[v < 6]    # logical indexing
+
+vv <- v
+vv
+
+vv[c(1,3,5)] <- c(1,2,3)    # replacing elements
+vv
+
+vv[c('b','d','f','h','j')] <- 0
+vv
+
+remove(vv)
+
+        # matrices
+
+A
+A[2,3]
+A[c(1,2), 2]
+A[c(1,2), c(2,3)]
+A[c(1,2),]
+
+A[c(1,2), 2, drop=FALSE]    # retain column dimension
+
+A[, -c(1,3)]    # delete columns 1 and 3
+A[-1, -2]       # delete row 1 and column 2
+
+rownames(A) <- c('one', 'two', 'three')
+colnames(A) <- c('w','x','y', 'z')
+A
+
+A[c('one','two'), c('x','y')]
+A[c(TRUE, FALSE, TRUE),]
+
+AA <- A
+AA
+
+AA[1,] <- 0
+AA
+
+remove(AA)
+
+        # lists
+
+list.1
+
+list.1[c(2,3)]
+
+list.1[2]   # a one-element list
+class(list.1[2])
+
+list.1[[2]] # a list element
+class(list.1[[2]])
+
+list.1["mat.1"]
+list.1[["mat.1"]]
+
+list.1$mat.1
+
+list.1$mat.1 <- matrix(1, 2, 2)     # replacing a list element
+list.1$title <- 'an arbitrary list' # adding an element
+list.1$mat.2<-NULL                  # removing an element
+list.1
+
+        # data frames
+
+attach(Guyer)
+Guyer
+
+Guyer[,1]
+
+Guyer[,'cooperation']
+
+Guyer[c(1,2),]
+
+Guyer[c('1','2'), 'cooperation']
+
+Guyer[-(6:20),]
+
+sex=='female' & condition=='public'
+Guyer[sex=='female' & condition=='public',]
+
+Guyer$cooperation
+Guyer[['cooperation']]
+Guyer['cooperation']  # a one-column data frame
+
+
+
+### Statistical Models in R
+
+    # multiple regression (Prestige data)
+    
+library(car)
+data(Prestige)
+names(Prestige)
+
+attach(Prestige)
+prestige.mod <- lm(prestige ~ income + education + women)
+summary(prestige.mod)
+
+    # dummy regression
+
+type    # a factor
+
+detach(Prestige)
+Prestige.2 <- na.omit(Prestige) # filter out missing data
+attach(Prestige.2)
+type
+length(type)
+
+class(type)
+unclass(type)
+
+        # generating contrasts from factors
+        
+options("contrasts")
+
+contrasts(type)
+
+contrasts(type) <- contr.treatment(levels(type), base=2)    # changing
+                                                 # the baseline category
+contrasts(type)
+
+contrasts(type) <- 'contr.helmert'  # Helmert contrasts
+contrasts(type)
+
+contrasts(type) <- 'contr.sum'  # "deviation" contrasts
+contrasts(type)
+
+contrasts(type) <- NULL  # back to default
+
+type.ord <- ordered(type, levels=c("bc", "wc", "prof")) # ordered factor
+type.ord
+round(contrasts(type.ord), 3)   # orthogonal polynomial contrasts
+
+prestige.mod.1 <- lm(prestige ~ income + education + type)
+summary(prestige.mod.1)
+
+anova(prestige.mod.1)   # sequential ("type-I") sums of squares
+
+prestige.mod.0 <- lm(prestige ~ income + education)
+summary(prestige.mod.0)
+anova(prestige.mod.0, prestige.mod.1)   # incremental F-test
+
+Anova(prestige.mod.1)   # "type-II" sums of squares
+
+prestige.mod.2 <- lm(prestige ~ income + education + type - 1)
+                                          # suppressing the constant
+summary(prestige.mod.2)
+Anova(prestige.mod.2)   # note: test for type is that all intercepts
+                        #   are 0 (not sensible)
+
+prestige.mod.3 <- update(prestige.mod.1, 
+    .~. + income:type + education:type)     # adding interactions to the model
+summary(prestige.mod.3)
+Anova(prestige.mod.3)
+
+lm(prestige ~ income*type + education*type) # equivalent specifications
+lm(prestige ~ (income + education)*type)
+
+lm(prestige ~ type + (income + education) %in% type)  # nesting
+lm(prestige ~ type + (income + education) %in% type - 1)  # separate
+                                              # intercepts and slopes
+
+detach(Prestige.2)
+
+    # more on lm
+
+args(lm)
+
+data(Davis)
+lm(weight ~ repwt, data=Davis, subset=sex == "F")  # observation
+                                                   #  selection
+
+lm(weight ~ repwt, data=Davis, subset=1:100)
+
+data(Duncan)
+lm(prestige ~ income + education, data=Duncan, subset=-c(6, 16))
+
+lm(prestige~I(income + education), data=Duncan)  # protecting
+                                       # expresssion on RHS of the model
+
+
+    # generalized linear models
+    
+        # binary logit model
+    
+
+data(Mroz)
+some(Mroz)
+
+attach(Mroz)
+mod.mroz <- glm(lfp ~ k5 + k618 + age + wc + hc + lwg + inc,
+    family=binomial)
+summary(mod.mroz)
+    
+anova(update(mod.mroz, . ~ . - k5), mod.mroz, test="Chisq")
+                                               # likelihood-ratio test
+
+Anova(mod.mroz)  # analysis-of-deviance table
+
+detach(Mroz)
+
+
+
+

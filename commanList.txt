@@ -1,0 +1,11 @@
+data<-loadSingleCsvFile(sourcePath[['path']])
+dbData<-getDbScanData(data)
+cluster<-getClustersUsingDbScan(dbData,300)
+jeditData<-read.csv('C:/Users/xman/Copy/R/Data/Jedit-3.2.csv')
+grouplingCsvFileUsingClusterInfo(jeditData,cluster)
+
+predictedData<-rbind(dbData[99,],dbData[234,],dbData[50,],dbData[8,],dbData[67,])
+#testData<-rbind(data[99,],data[234,],data[50,],data[8,],data[67,])
+predictedCls<-getPredictedCluster(dbData,300,predictedData)
+testData<-read.csv('C:/Users/xman/Copy/R/Data/testData.csv')
+residual<-predictDefect()

@@ -1,0 +1,10 @@
+"","name","id","wmc","dit","noc","cbo","rfc","lcom","npm","loc","bug"
+"130","org.gjt.sp.jedit.msg.BufferUpdate",130,6,3,0,14,14,5,5,81,0
+"125","bsh.BSHVariableDeclarator",125,2,2,0,10,9,1,1,40,0
+"136","bsh.BSHThrowStatement",136,2,2,0,7,7,1,1,30,0
+"131","org.gjt.sp.jedit.search.SearchFileSet",131,5,1,0,9,5,10,5,5,0
+"133","org.gjt.sp.jedit.syntax.ParserRuleFactory",133,11,1,0,3,16,55,9,456,0
+"134","bsh.TokenMgrError",134,6,3,0,2,19,15,4,184,0
+"126","org.gjt.sp.util.WorkThreadProgressListener",126,1,1,0,5,1,0,1,1,0
+"129","org.gjt.sp.jedit.pluginmgr.PluginListDownloadProgress",129,7,6,0,7,33,11,0,145,1
+"128","org.gjt.sp.jedit.gui.IOProgressMonitor",128,5,6,0,10,33,4,2,152,1

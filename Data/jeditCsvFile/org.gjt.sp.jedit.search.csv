@@ -1,0 +1,16 @@
+name,Id,wmc,dit,noc,cbo,rfc,lcom,npm,loc,bug
+org.gjt.sp.jedit.search.AllBufferSet,32,5,2,0,7,22,4,3,93,0
+org.gjt.sp.jedit.search.BoyerMooreSearchMatcher,180,7,1,0,5,16,0,4,416,3
+org.gjt.sp.jedit.search.BufferListSet,206,9,1,2,9,24,6,8,174,0
+org.gjt.sp.jedit.search.CharIndexedSegment,223,4,1,0,2,5,0,3,63,0
+org.gjt.sp.jedit.search.CurrentBufferSet,162,6,1,0,6,8,15,6,24,0
+org.gjt.sp.jedit.search.DirectoryListSet,139,8,2,0,8,34,12,5,223,0
+org.gjt.sp.jedit.search.HyperSearchRequest,265,6,2,0,14,40,3,2,252,3
+org.gjt.sp.jedit.search.HyperSearchResult,117,6,1,0,8,23,3,5,128,1
+org.gjt.sp.jedit.search.HyperSearchResults,272,13,5,0,17,53,54,9,303,2
+org.gjt.sp.jedit.search.RESearchMatcher,264,4,1,0,11,25,0,3,145,4
+org.gjt.sp.jedit.search.SearchAndReplace,72,31,1,0,34,108,197,28,1228,9
+org.gjt.sp.jedit.search.SearchBar,163,13,5,0,14,65,14,4,398,3
+org.gjt.sp.jedit.search.SearchDialog,29,30,7,0,22,137,315,4,1603,7
+org.gjt.sp.jedit.search.SearchFileSet,131,5,1,0,9,5,10,5,5,0
+org.gjt.sp.jedit.search.SearchMatcher,101,2,1,0,4,2,1,2,2,2

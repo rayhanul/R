@@ -1,0 +1,8 @@
+"","name","id","wmc","dit","noc","cbo","rfc","lcom","npm","loc","bug"
+"728","org.apache.tools.ant.ComponentHelper",728,39,1,0,26,154,449,26,1711,0
+"410","org.apache.tools.ant.filters.util.JavaClassHelper",410,3,1,0,4,19,1,2,89,0
+"NA",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+"202","org.apache.tools.ant.util.Base64Converter",202,4,1,1,2,7,4,3,502,0
+"30","org.apache.tools.ant.util.KeepAliveInputStream",30,2,3,0,1,3,1,2,7,0
+"NA1",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+"193","org.apache.tools.ant.UnknownElement",193,31,3,0,29,119,277,19,900,3

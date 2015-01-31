@@ -1,0 +1,13 @@
+"","name","id","wmc","dit","noc","cbo","rfc","lcom","npm","loc","bug"
+"259","org.gjt.sp.jedit.gui.EnhancedCheckBoxMenuItem",259,7,7,0,5,38,9,4,210,2
+"254","bsh.BSHStatementExpressionList",254,2,2,0,7,6,1,1,28,0
+"257","gnu.regexp.IntPair",257,1,1,0,1,2,0,0,6,0
+"253","bsh.BSHReturnType",253,2,2,0,8,5,1,1,19,0
+"256","org.gjt.sp.jedit.gui.LogViewer",256,3,5,0,5,14,3,3,55,0
+"248","bsh.TargetError",248,11,4,0,18,26,13,11,171,0
+"261","org.gjt.sp.jedit.msg.EditorStarted",261,1,3,0,3,2,0,1,5,0
+"252","org.gjt.sp.jedit.msg.VFSUpdate",252,3,2,0,6,9,0,3,34,0
+"247","gnu.regexp.CharIndexedCharArray",247,4,1,0,2,5,0,3,59,0
+"249","gnu.regexp.CharIndexedInputStream",249,5,1,0,3,12,0,3,251,0
+"250","bsh.BSHAllocationExpression",250,8,2,0,18,37,28,1,271,0
+"255","bsh.BshMethod",255,4,1,0,13,20,0,4,301,0
