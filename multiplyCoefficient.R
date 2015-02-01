@@ -1,4 +1,4 @@
-
+# standard code metrics values...
 CodeMetricsStdVal<- c(cbo=9,wmc=20 , rfc=50, loc=60, lcom=2,npm=7,dit=5,noc=6 )
 # get coefficient value from the existing data....
 getCoefficientFromAvailableData<-function(data){
@@ -22,7 +22,6 @@ getDataBymultiplingCoefficientValue<-function(data,coff){
 		c[["loc"]]<-c[["loc"]]*coff[["loc"]]
 		newMatrix<-rbind(newMatrix,c)
 	}
-	#newMatrix[-1,]
 	return(newMatrix)
 }
 
@@ -30,7 +29,6 @@ getDataBymultiplingCoefficientValue<-function(data,coff){
 compareDataWithStandardValue<-function(data,stdValue){
 
 	newMatrix<-c()
-	
 	for (n in 1:nrow(data)){
 		c<-data[n,]
 		c[["wmc"]]<- 100- (c[["wmc"]]/stdValue[["wmc"]])*100
@@ -43,10 +41,7 @@ compareDataWithStandardValue<-function(data,stdValue){
 		c[["loc"]]<- 100- (c[["loc"]]/stdValue[["loc"]])*100
 		
 		newMatrix<-rbind(newMatrix,c)
-	}
-	
-	#newMatrix[-1,]
-	
+	}	
 	return(newMatrix)
 } 
 # partioning data based positive impact and negative impact...
@@ -84,13 +79,13 @@ combindedData<-c()
 return(combindedData)
 }
 
-
+# making two dimentional data...
 getDataApplicableForDbScan<-function(data){
 	combindedData<-c()
-	# using comparison with standard value ...
+		# using comparison with standard value ...
 	#unsignedData<-compareDataWithStandardValue(data,CodeMetricsStdVal)
 	
-	# using coefficient values...
+		# using coefficient values...
 	coeff<-getCoefficientFromAvailableData(data)
 	unsignedData<-getDataBymultiplingCoefficientValue(data,coeff)
 	
@@ -100,7 +95,31 @@ getDataApplicableForDbScan<-function(data){
 	
 return(combindedData)
 }
-
+addingClusterInfoToData<-function(prdtedDefect,jointClusterIds,clusterId){
+clster<-c()
+	#if(is.element(clusterId,jointClusterIds)==FALSE){
+	if(nrow(prdtedDefect)>1){
+		for(i in 1:nrow(prdtedDefect)){
+		rowItem<-prdtedDefect[i,]
+		fit<-rowItem[1]
+		lwr<-rowItem[2]
+		high<-rowItem[3]
+		cls<-cbind(fit,lwr,high,clusterId)
+		clster<-rbind(clster,cls)
+		}
+	}
+	#}else{
+		#for(i in 1:nrow(prdtedDefect)){
+	#	rowItem<-prdtedDefect[i,]
+	#	fit<-rowItem[1]
+	#	lwr<-rowItem[2]
+	#	high<-rowItem[3]
+	#	cls<-cbind(fit,lwr,high,'11111')
+	#	clster<-rbind(clster,cls)
+	#	}
+	#}
+return(clster)
+}
 
 loadCsvFile<-function(filepath){
 	data<-read.csv(filepath)
