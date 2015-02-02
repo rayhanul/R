@@ -3,7 +3,7 @@ source('C:/Users/x-man/Copy/R/Defect_Prediction/multiplyCoefficient.R')
 source('C:/Users/x-man/Copy/R/Defect_Prediction/DbScanCluster.R')
 source('C:/Users/x-man/Copy/R/Defect_Prediction/datasetManager.R')
 
-sourcePath <- c(filePath="C:/Users/x-man/Copy/R/Defect_Prediction/Data/Poi/poi-3.0.csv", dataPath="C:/Users/x-man/Copy/R/Defect_Prediction/Data/Poi")
+sourcePath <- c(filePath="C:/Users/x-man/Copy/R/Data/Poi/poi-3.0.csv", dataPath="C:/Users/x-man/Copy/R/Data/Poi")
 dbScanParam<-c(eps= 4.3434)
 # predict defects using ... DBScan...and 
 predictDefect<-function(){
@@ -23,7 +23,7 @@ predictDefect<-function(){
 	jointClusterIds<-grouplingCsvFileUsingClusterInfo(data$trainset,cluster)
 	#..............
 	testData<-data$testset
-#	testData<-loadCsvFile('C:/Users/x-man/Copy/R/Defect_Prediction/Data/testData.csv')
+#	testData<-loadCsvFile('C:/Users/x-man/Copy/R/Data/testData.csv')
 	testdbData<-getDbScanData(testData)
     #.............
 	predictedCluster<-getPredictedCluster(dbData,dbScanParam[['eps']],testdbData)

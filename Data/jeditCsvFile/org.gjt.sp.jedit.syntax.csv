@@ -1,8 +1,0 @@
-name,Id,wmc,dit,noc,cbo,rfc,lcom,npm,loc,bug
-org.gjt.sp.jedit.syntax.ParserRule,189,1,1,0,6,2,0,0,21,0
-org.gjt.sp.jedit.syntax.ParserRuleFactory,133,11,1,0,3,16,55,9,456,0
-org.gjt.sp.jedit.syntax.ParserRuleSet,127,17,1,0,8,22,100,17,199,1
-org.gjt.sp.jedit.syntax.SyntaxStyle,212,4,1,0,10,5,0,4,28,0
-org.gjt.sp.jedit.syntax.Token,209,2,1,0,4,7,0,2,48,1
-org.gjt.sp.jedit.syntax.TokenMarker,69,10,1,0,10,46,9,7,1441,1
-org.gjt.sp.jedit.syntax.XModeHandler,67,19,2,0,11,75,123,8,1106,2

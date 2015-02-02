@@ -1,9 +1,0 @@
-"","name","id","wmc","dit","noc","cbo","rfc","lcom","npm","loc","bug"
-"78","org.apache.tools.ant.taskdefs.optional.Cab",78,15,4,0,14,83,47,8,566,0
-"731","org.apache.tools.ant.taskdefs.VerifyJar",731,4,4,0,9,36,0,3,179,1
-"64","org.apache.tools.ant.AntClassLoader",64,56,2,2,51,169,1200,35,1842,6
-"264","org.apache.tools.ant.taskdefs.optional.perforce.P4Labelsync",264,9,4,0,5,20,28,9,156,0
-"469","org.apache.tools.ant.util.StringTokenizer",469,8,2,1,4,18,2,7,194,0
-"335","org.apache.tools.ant.taskdefs.optional.javah.JavahAdapter",335,1,1,0,5,1,0,1,1,0
-"249","org.apache.tools.ant.types.resources.comparators.Content",249,4,4,0,4,7,0,3,34,0
-"170","org.apache.tools.ant.taskdefs.optional.j2ee.WebLogicHotDeploymentTool",170,13,2,0,8,37,60,7,331,0

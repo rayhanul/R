@@ -1,8 +1,0 @@
-"","name","id","wmc","dit","noc","cbo","rfc","lcom","npm","loc","bug"
-"598","org.apache.tools.ant.taskdefs.compilers.JavacExternal",598,3,2,0,8,24,3,2,116,0
-"10","org.apache.tools.ant.types.selectors.DepthSelector",10,7,5,0,9,25,0,7,255,0
-"473","org.apache.tools.ant.taskdefs.optional.ccm.CCMCheckin",473,1,5,0,1,8,0,1,18,0
-"493","org.apache.tools.ant.NoBannerLogger",493,4,2,0,4,17,0,4,57,1
-"609","org.apache.tools.ant.util.depend.bcel.DependencyVisitor",609,12,2,0,8,41,48,9,203,0
-"NA",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
-"421","org.apache.tools.ant.taskdefs.ExecuteWatchdog",421,9,1,0,17,23,0,8,141,0

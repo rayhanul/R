@@ -1,6 +1,0 @@
-"","name","id","wmc","dit","noc","cbo","rfc","lcom","npm","loc","bug"
-"93","org.apache.tools.ant.BuildLogger",93,4,1,0,6,4,6,4,4,0
-"NA",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
-"650","org.apache.tools.ant.FileScanner",650,14,1,0,5,14,91,14,14,0
-"19","org.apache.tools.zip.ZipExtraField",19,6,1,0,8,6,15,6,6,0
-"414","org.apache.tools.ant.util.FileNameMapper",414,3,1,0,38,3,3,3,3,0
