@@ -2,8 +2,8 @@
 library('fpc')
 source('C:/Users/x-man/Copy/R/Defect_Prediction/FileManager.R')
 # get cluster info ...
-getClustersUsingDbScan<-function(data,eps){
-	dbcluster<-dbscan(data,eps); 
+getClustersUsingDbScan<-function(data,epsValue){
+	dbcluster<-dbscan(data,eps=epsValue,method="raw"); 
 
 	#predictedCluster<-predict(dbcluster,data,dataTobeClassified)
 	return(dbcluster)
@@ -11,7 +11,7 @@ getClustersUsingDbScan<-function(data,eps){
 # predict cluster of the new data... 
 getPredictedCluster<-function(data,eps,dataTobeClassified){
 
-	dbcluster<-dbscan(data,eps); 
+	dbcluster<-dbscan(data, eps, method="raw"); 
 
 	predictedCluster<-predict(dbcluster,data,dataTobeClassified)
 	return(predictedCluster)
@@ -32,7 +32,7 @@ grouplingCsvFileUsingClusterInfo<-function(mainData, cluster){
 		}
 		
 	}
-	if(nrow(jointClusterData)>1){
+	if(is.null(jointClusterData)==FALSE){
 		writeDataFrameTo(jointClusterData,sourcePath[["dataPath"]],'11111.csv')
 	}
 	

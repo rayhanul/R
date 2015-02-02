@@ -3,7 +3,7 @@ source('C:/Users/x-man/Copy/R/Defect_Prediction/multiplyCoefficient.R')
 source('C:/Users/x-man/Copy/R/Defect_Prediction/DbScanCluster.R')
 source('C:/Users/x-man/Copy/R/Defect_Prediction/datasetManager.R')
 
-sourcePath <- c(filePath="C:/Users/x-man/Copy/R/Defect_Prediction/Data/jedit-3.2.csv", dataPath="C:/Users/x-man/Copy/R/Defect_Prediction/Data")
+sourcePath <- c(filePath="C:/Users/x-man/Copy/R/Defect_Prediction/Data/Poi/poi-3.0.csv", dataPath="C:/Users/x-man/Copy/R/Defect_Prediction/Data/Poi")
 dbScanParam<-c(eps= 4.3434)
 # predict defects using ... DBScan...and 
 predictDefect<-function(){

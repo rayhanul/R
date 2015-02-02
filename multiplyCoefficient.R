@@ -53,11 +53,13 @@ partitionDataBasedOnSign<-function(data){
 		nNeg<-0
 		for(i in 3:(ncol(rowItem)-1)){
 			if(is.finite(rowItem[[i]])){
-				if(rowItem[[i]]>=0){
-					nPos<-nPos+rowItem[[i]]
-				}else{
-					nNeg<-nNeg-rowItem[[i]]
-				}		
+				if(is.null(rowItem[[i]])==FALSE){
+					if(rowItem[[i]]>=0){
+						nPos<-nPos+rowItem[[i]]
+					}else{
+						nNeg<-nNeg-rowItem[[i]]
+					}
+				}			
 			}
 		}
 		newMatrix<-rbind(newMatrix,c(rowItem[["id"]],nPos,nNeg,rowItem[["bug"]]))		
