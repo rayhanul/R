@@ -1,6 +1,6 @@
 
 library('fpc')
-source('C:/Users/x-man/Copy/R/Defect_Prediction/FileManager.R')
+source('C:/Users/xman/Copy/R/Defect_Prediction/FileManager.R')
 # get cluster info ...
 getClustersUsingDbScan<-function(data,epsValue){
 	dbcluster<-dbscan(data,eps=epsValue,method="raw"); 
@@ -39,8 +39,13 @@ grouplingCsvFileUsingClusterInfo<-function(mainData, cluster){
 	return(jointClusters)
 }
 
-getEpsValue<-function(dbScanData){
-
+getEpsValue<-function(data){
+	model<-lm(bug~wmc+loc+npm+cbo+lcom+rfc+noc+dit,data)
+	intercept<-model$coefficients[1]*4
+	if(intercept<0){
+		intercept<-intercept*(-1)
+	}
+	return(intercept)
 }
 # generate eps value...
 getEpsValueFromAverageDistanceOfEachPoint<-function(dbScanData){
