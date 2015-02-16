@@ -1,6 +1,6 @@
 
 library('fpc')
-source('C:/Users/xman/Copy/R/Defect_Prediction/FileManager.R')
+source('C:/Users/x-man/Copy/R/Defect_Prediction/FileManager.R')
 # get cluster info ...
 getClustersUsingDbScan<-function(data,epsValue){
 	dbcluster<-dbscan(data,eps=epsValue,method="raw"); 
@@ -47,6 +47,20 @@ getEpsValue<-function(data){
 	}
 	return(intercept)
 }
+
+getEpsValueFromInterceptFromSelectingEach<-function(data){
+	modelWmc<-lm(bug~wmc,data)
+	modelLoc<-lm(bug~loc,data)
+	modelNpm<-lm(bug~npm,data)
+	modelCbo<-lm(bug~cbo,data)
+	modelLcom<-lm(bug~lcom,data)
+	modelRfc<-lm(bug~rfc,data)
+	modelDit<-lm(bug~dit,data)
+	modelNoc<-lm(bug~noc,data)
+eps<-modelWmc$coefficients[1]+modelLoc$coefficients[1]+modelNpm$coefficients[1]+modelCbo$coefficients[1]+modelLcom$coefficients[1]+modelRfc$coefficients[1]+modelDit$coefficients[1]+modelNoc$coefficients[1]
+return(eps)
+}
+
 # generate eps value...
 getEpsValueFromAverageDistanceOfEachPoint<-function(dbScanData){
 distanceList<-c()
