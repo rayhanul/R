@@ -1,7 +1,8 @@
 
 source('C:/Users/x-man/Copy/R/Defect_Prediction/datasetManager.R')
 source('C:/Users/x-man/Copy/R/Defect_Prediction/FileManager.R')
-sourcePath <- c(filePath="C:/Users/x-man/Copy/R/Data")
+#sourcePath <- c(filePath="C:/Users/x-man/Copy/R/Data")
+source('C:/Users/x-man/Copy/R/Defect_Prediction/DataInfo.R')
 
 getPredictedDefects<-function(trainData,testData){
 
@@ -10,15 +11,15 @@ getPredictedDefects<-function(trainData,testData){
 	return(predictedDefect)
 }
 
-predictDefectUsingBorderFlow<-function(fileName){
+predictDefectUsingEntireSystem<-function(fileName){
 
 	combindedData<-c()
-	combindedPath<-paste(sourcePath[['filePath']],fileName,sep="/")
-	data<-read.csv(combindedPath)
+	#combindedPath<-paste(sourcePath[['dataPath']],fileName,sep="/")
+	data<-read.csv(sourcePath[["mainFile"]])
 	splittedData<-splitData(data)
 	predictedDefect<-getPredictedDefects(splittedData$trainset,splittedData$testset)	
 	combindedData<-rbind(combindedData,predictedDefect)
-	writeDataFrameTo(combindedData,sourcePath[['filePath']],"RESIDUAL.csv")
+	writeDataFrameTo(combindedData,sourcePath[['dataPath']],"predictedDefectsUsingEntire.csv")
 return(combindedData)
 }
 

@@ -1,6 +1,6 @@
 source('C:/Users/x-man/Copy/R/Defect_Prediction/datasetManager.R')
 source('C:/Users/x-man/Copy/R/Defect_Prediction/FileManager.R')
-sourcePath <- c(filePath="C:/Users/x-man/Copy/R/thesis/Borderflow/clusters")
+source('C:/Users/x-man/Copy\R/Defect_Prediction/DataInfo.R')
 
 #splitData<-function(myData){
 
@@ -25,15 +25,15 @@ getPredictedDefects<-function(trainData,testData){
 
 predictDefectUsingBorderFlow<-function(){
 
-	allFiles<-list.files(sourcePath[['filePath']])
+	allFiles<-list.files(sourcePath[['BorderFlowfilePath']])
 	combindedData<-c()
 		for(i in 1: length(allFiles)){
-		combindedPath<-paste(sourcePath[['filePath']],allFiles[[i]],sep="/")
+		combindedPath<-paste(sourcePath[['BorderFlowfilePath']],allFiles[[i]],sep="/")
 			data<-read.csv(combindedPath)
 			splittedData<-splitData(data)
 			predictedDefect<-getPredictedDefects(splittedData$trainset,splittedData$testset)	
 			combindedData<-rbind(combindedData,predictedDefect)
 		}
-	writeDataFrameTo(combindedData,sourcePath[['filePath']],"RESIDUAL")
+	writeDataFrameTo(combindedData,sourcePath[['BorderFlowfilePath']],"RESIDUAL")
 return(combindedData)
 }
