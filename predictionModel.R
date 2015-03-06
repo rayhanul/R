@@ -2,9 +2,7 @@ source('C:/Users/x-man/Copy/R/Defect_Prediction/multiplyCoefficient.R')
 source('C:/Users/x-man/Copy/R/Defect_Prediction/DbScanCluster.R')
 source('C:/Users/x-man/Copy/R/Defect_Prediction/datasetManager.R')
 source('C:/Users/x-man/Copy/R/Defect_Prediction/DataInfo.R')
-#sourcePath <- c(filePath="C:/Users/x-man/Copy/R/Data/jedit-3.2.csv", dataPath="C:/Users/x-man/Copy/R/Data")
-dbScanParam<-c(eps= 3.242342)
-calEps<-0
+
 # predict defects using ... DBScan...and 
 predictDefect<-function(){
 	#loading a Csv File...
@@ -18,6 +16,7 @@ predictDefect<-function(){
 	#eps<- getEpsValueFromAverageDistanceOfEachPoint(dbData)
 	#eps<-getEpsValue(csvData)
 	eps<-getEpsValueFromInterceptFromSelectingEach(csvData)
+	eps<-3.856
 	cluster<-getClustersUsingDbScan(dbData,eps)
 	
 	# storing each cluster...to file....
@@ -27,7 +26,7 @@ predictDefect<-function(){
 	#testData<-loadCsvFile('C:/Users/x-man/Copy/R/Data/testData.csv')
 	testdbData<-getDbScanData(testData)
     #.............
-	predictedCluster<-getPredictedCluster(dbData,dbScanParam[['eps']],testdbData)
+	predictedCluster<-getPredictedCluster(dbData,eps,testdbData)
 	numberOfCluster<-tail(sort(predictedCluster),1)
 	residualValues<-c()
 	for(i in 0:numberOfCluster){
@@ -52,7 +51,11 @@ predictDefect<-function(){
 	residualValues<-rbind(residualValues,prdtedDefect)
 	}
 	}
-	getCombinedTestDataWithResidualValues(testData,residualValues,"testDataWithResidualValues.csv")
-	
+	combinedData<-	getCombinedTestDataWithResidualValues(testData,residualValues,"testDataWithResidualValuesForDbScan.csv")
+	writeDataFrameTo(combinedData,sourcePath[['dataPath']],"testDataWithResidualValuesForDbScan.csv")
+	computeResidualValue("testDataWithResidualValuesForDbScan.csv","ResidualValForDbScan.csv")
   return(residualValues)
 }
+
+
+

@@ -1,6 +1,8 @@
 source('C:/Users/x-man/Copy/R/Defect_Prediction/datasetManager.R')
 source('C:/Users/x-man/Copy/R/Defect_Prediction/FileManager.R')
 source('C:/Users/x-man/Copy/R/Defect_Prediction/DataInfo.R')
+source('C:/Users/x-man/Copy/R/Defect_Prediction/HerederInfoManager.R')
+source('C:/Users/x-man/Copy/R/Defect_Prediction/ResidualValueAnalysis.R')
 
 data<-read.csv(sourcePath["mainFile"])
 
@@ -116,7 +118,7 @@ getRealClusteredDataForTestPredictionModel<-function(dimReducedDataWithClusterIn
   
   return(testData)
 }
-getPredictedDefect<-function(){
+getPredictedDefects<-function(){
 
 	#dimReducedData<-getDimentionReducedData(splittedData$trainset) 
 	#position<-getFirstQuadrantPosition(dimReducedData)
@@ -138,6 +140,11 @@ getPredictedDefect<-function(){
  predictedDefects<-rbind(predictedDefects,pDefect)
   }
   #writeDataFrameTo(predictedDefects,sourcePath[['PcaAnalysisPath']],"residualTimMenzies")
- getCombinedTestDataWithResidualValues(splittedData$testset,predictedDefects,"testDataWithResidualValuesForMenzies.csv")
+ combinedData<-getCombinedTestDataWithResidualValues(splittedData$testset,predictedDefects,"testDataWithResidualValuesForMenzies.csv")
+ writeDataFrameTo(combinedData,sourcePath[['dataPath']],"testDataWithResidualValuesForMenzies.csv")
+ #............computing residual values...............
+ #tempData<-correctingheaderInfo(sourcePath[['dataPath']],"testDataWithResidualValuesForMenzies.csv")
+ #writeDataFrameWithOutRowIdColumn(tempData,sourcePath[['dataPath']],"testDataWithResidualValuesForMenzies.csv")
+ computeResidualValue("testDataWithResidualValuesForMenzies.csv","ResidualValForTimMenzies.csv")
  return(predictedDefects)
 }

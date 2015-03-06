@@ -1,6 +1,6 @@
 source('C:/Users/x-man/Copy/R/Defect_Prediction/datasetManager.R')
 source('C:/Users/x-man/Copy/R/Defect_Prediction/FileManager.R')
-source('C:/Users/x-man/Copy\R/Defect_Prediction/DataInfo.R')
+source('C:/Users/x-man/Copy/R/Defect_Prediction/DataInfo.R')
 
 #splitData<-function(myData){
 

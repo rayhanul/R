@@ -1,14 +1,15 @@
 
-source('C:/Users/x-man/Copy/R/Defect_Prediction/FileManager.R')
+#source('C:/Users/x-man/Copy/R/Defect_Prediction/FileManager.R')
 
-source('C:/Users/x-man/Copy/R/Defect_Prediction/DataInfo.R')
+#source('C:/Users/x-man/Copy/R/Defect_Prediction/DataInfo.R')
 
 
 
-computeResidualValue<-function(){
+computeResidualValue<-function(predictedFileName,ResidualValuesFileName){
 
 	mainData<-read.csv(sourcePath[["mainFile"]])
-	predictedData<-read.csv(sourcePath[["predictedFileForEntire"]])
+  predictedFilePath<-paste(sourcePath[['dataPath']],predictedFileName,sep="/")
+	predictedData<-read.csv(predictedFilePath)
 	allResidualValues<-c()
 	for(i in 1:nrow(predictedData)){
 	predictedRowItem<-predictedData[i,]
@@ -22,6 +23,7 @@ computeResidualValue<-function(){
 		}
 		allResidualValues<-rbind(allResidualValues,rowResidualValue)
 	}
-	writeDataFrameTo(allResidualValues,sourcePath[['dataPath']],"ResidualValForEntire.csv")
+	
+	writeDataFrameWithOutRowIdColumn(allResidualValues,sourcePath[['dataPath']],ResidualValuesFileName)
 	return(allResidualValues)
 }

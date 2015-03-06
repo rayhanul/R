@@ -1,4 +1,3 @@
-
 splitData<-function(myData){
 
 ## 75% of the sample size
@@ -12,3 +11,5 @@ train <- myData[train_ind, ]
 test <- myData[-train_ind, ]
 list(trainset=train, testset=test)
 }
+
+
