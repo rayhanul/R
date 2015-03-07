@@ -1,7 +1,6 @@
 
 source('C:/Users/x-man/Copy/R/Defect_Prediction/datasetManager.R')
 source('C:/Users/x-man/Copy/R/Defect_Prediction/FileManager.R')
-#sourcePath <- c(filePath="C:/Users/x-man/Copy/R/Data")
 source('C:/Users/x-man/Copy/R/Defect_Prediction/DataInfo.R')
 source('C:/Users/x-man/Copy/R/Defect_Prediction/HerederInfoManager.R')
 source('C:/Users/x-man/Copy/R/Defect_Prediction/ResidualValueAnalysis.R')

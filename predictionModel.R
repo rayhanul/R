@@ -2,7 +2,7 @@ source('C:/Users/x-man/Copy/R/Defect_Prediction/multiplyCoefficient.R')
 source('C:/Users/x-man/Copy/R/Defect_Prediction/DbScanCluster.R')
 source('C:/Users/x-man/Copy/R/Defect_Prediction/datasetManager.R')
 source('C:/Users/x-man/Copy/R/Defect_Prediction/DataInfo.R')
-
+source('C:/Users/x-man/Copy/R/Defect_Prediction/ResidualValueAnalysis.R')
 # predict defects using ... DBScan...and 
 predictDefect<-function(){
 	#loading a Csv File...
@@ -23,7 +23,7 @@ predictDefect<-function(){
 	jointClusterIds<-grouplingCsvFileUsingClusterInfo(data$trainset,cluster)
 	#..............
 	testData<-data$testset
-	#testData<-loadCsvFile('C:/Users/x-man/Copy/R/Data/testData.csv')
+	#testData<-loadCsvFile('C:/Users/xman/Copy/R/Data/testData.csv')
 	testdbData<-getDbScanData(testData)
     #.............
 	predictedCluster<-getPredictedCluster(dbData,eps,testdbData)
