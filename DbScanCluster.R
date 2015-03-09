@@ -9,9 +9,9 @@ getClustersUsingDbScan<-function(data,epsValue){
 	return(dbcluster)
 }
 # predict cluster of the new data... 
-getPredictedCluster<-function(data,eps,dataTobeClassified){
+getPredictedCluster<-function(data,epsValue,dataTobeClassified){
 
-	dbcluster<-dbscan(data, eps, method="raw"); 
+	dbcluster<-dbscan(data, eps=epsValue, method="raw"); 
 
 	predictedCluster<-predict(dbcluster,data,dataTobeClassified)
 	return(predictedCluster)
