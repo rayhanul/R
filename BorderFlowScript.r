@@ -1,6 +1,6 @@
-source('C:/Users/x-man/Copy/R/Defect_Prediction/datasetManager.R')
-source('C:/Users/x-man/Copy/R/Defect_Prediction/FileManager.R')
-source('C:/Users/x-man/Copy/R/Defect_Prediction/DataInfo.R')
+source('C:/Users/xman/Copy/R/Defect_Prediction/datasetManager.R')
+source('C:/Users/xman/Copy/R/Defect_Prediction/FileManager.R')
+source('C:/Users/xman/Copy/R/Defect_Prediction/DataInfo.R')
 
 #splitData<-function(myData){
 
@@ -35,9 +35,15 @@ data<-read.csv(sourcePath[['mainFile']],stringsAsFactors=FALSE)
 splittedData<-splitData(data)
 
 
-getPredictedDefects<-function(trainData,testData){
+getPredictedDefects<-function(trainData,testData,times){
 
 	predictionModel<-lm(bug~wmc+loc+npm+cbo+lcom+rfc+noc+dit,trainData)
+	
+	# writing model summary....................
+	fileName<-paste("ModelSummaryForBorderFlow",times,sep="_")
+	fileName<-paste(fileName,"csv",sep=".")
+	writeModelSummary(predictionModel,sourcePath[['dataPath']],fileName)
+	
 	predictedDefect<-predict(predictionModel,testData,interval="predict")
 	return(predictedDefect)
 }
@@ -69,7 +75,7 @@ predictDefectUsingBorderFlow<-function(){
 		for(i in 1: length(numberOfClusters) ){		
 			trainingData<-getDataForClusterId(splittedData$trainset,clustersInfo,numberOfClusters[i])
 			testData<-getDataForClusterId(splittedData$testset,clustersInfo,numberOfClusters[i])
-			predictedDefect<-getPredictedDefects(trainingData,testData)	
+			predictedDefect<-getPredictedDefects(trainingData,testData,i)	
 			combindedData<-rbind(combindedData,predictedDefect)
 		}
 		

@@ -7,6 +7,12 @@ source('C:/Users/x-man/Copy/R/Defect_Prediction/ResidualValueAnalysis.R')
 getPredictedDefects<-function(trainData,testData){
 
 	predictionModel<-lm(bug~wmc+loc+npm+cbo+lcom+rfc+noc+dit,trainData)
+	
+	# writing model summary....................
+	fileName<-paste("modelSummaryForEntireSytem","csv",sep=".")
+	writeModelSummary(predictionModel,sourcePath[['dataPath']],fileName)
+	
+	
 	predictedDefect<-predict(predictionModel,testData,interval="predict")
 	return(predictedDefect)
 }

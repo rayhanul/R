@@ -47,6 +47,11 @@ predictDefect<-function(){
 			if(nrow(trainData)>10){
 				predictionModel <- lm(bug~wmc+loc+npm+cbo+lcom+rfc+noc+dit,trainData)
 				
+				# writing model summary....................
+				fileName<-paste("ModelSummaryForDBScan",i,sep="_")
+				fileName<-paste(fileName,"csv",sep=".")
+				writeModelSummary(predictionModel,sourcePath[['dataPath']],fileName)
+				
 				prdtedDefect<-predict(predictionModel,testDataIds,interval="predict")
 				#adding cluster info...
 				prdtedDefect<-addingClusterInfoToData(prdtedDefect,jointClusterIds,i)
@@ -59,6 +64,11 @@ predictDefect<-function(){
 	}else{
 		predictionModel <- lm(bug~wmc+loc+npm+cbo+lcom+rfc+noc+dit,data$trainset)
 		
+		# writing model summary....................
+		fileName<-paste("ModelSummaryForDBScan","csv",sep=".")
+		writeModelSummary(predictionModel,sourcePath[['dataPath']],fileName)
+    
+    
 		prdtedDefect<-predict(predictionModel,data$testset,interval="predict")
 		#adding cluster info...
 		residualValues<-addingClusterInfoToData(prdtedDefect,jointClusterIds,0)

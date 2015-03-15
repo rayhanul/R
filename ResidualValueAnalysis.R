@@ -1,7 +1,7 @@
 
-#source('C:/Users/x-man/Copy/R/Defect_Prediction/FileManager.R')
+#source('C:/Users/xman/Copy/R/Defect_Prediction/FileManager.R')
 
-#source('C:/Users/x-man/Copy/R/Defect_Prediction/DataInfo.R')
+#source('C:/Users/xman/Copy/R/Defect_Prediction/DataInfo.R')
 
 
 

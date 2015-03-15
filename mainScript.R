@@ -24,8 +24,12 @@ predictDefect()
 rm(list=ls())
 
 
+#.............BorderFlow.............
 
+source('C:/Users/x-man/Copy/R/Defect_Prediction/BorderFlowScript.R')
 
+predictDefectUsingBorderFlow()
+rm(list=ls())
 
 
 #......................combining all results..................

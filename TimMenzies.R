@@ -135,6 +135,12 @@ getPredictedDefects<-function(){
   testData<-getRealClusteredDataForTestPredictionModel(dimReducedpredictedClustersList,clster)
   
  model<-lm(bug~wmc+loc+npm+cbo+lcom+rfc+noc+dit,mainTrainData)
+ 
+ # writing model summary....................
+ fileName<-paste("ModelSummaryForTimMenzies",clster,sep="_")
+ fileName<-paste(fileName,"csv",sep=".")
+ writeModelSummary(model,sourcePath[['dataPath']],fileName)
+ 
  pDefect<-predict(model, testData,interval="predict")
  #dataFrame<-pDefect.frame()
  predictedDefects<-rbind(predictedDefects,pDefect)

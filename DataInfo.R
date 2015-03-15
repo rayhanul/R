@@ -17,30 +17,30 @@
 # PcaAnalysisPath="C:/Users/x-man/Copy/R/Data/Synapse-1.2/")
 
 #Ant..........
-# 
-# sourcePath<-c(mainFile="C:/Users/x-man/Copy/R/Data/Ant-1.5/ant-1.5.csv",
-# predictedFile="C:/Users/x-man/Copy/R/Data/Ant-1.5/testDataWithResidualValuesForMenzies.csv",
-# predictedFileForEntire="C:/Users/x-man/Copy/R/Data/Ant-1.5/predictedDefectsUsingEntire.csv",
-# dataPath="C:/Users/x-man/Copy/R/Data/Ant-1.5",
-# BorderFlowfilePath="C:/Users/x-man/Copy/R/thesis/Borderflow/clusters",
-# PcaAnalysisPath="C:/Users/x-man/Copy/R/Data/Ant-1.5/")
+
+# sourcePath<-c(mainFile="C:/Users/x-man/Copy/R/Data/Ant-1.6/ant-1.6.csv",
+#               predictedFile="C:/Users/x-man/Copy/R/Data/Ant-1.6/testDataWithResidualValuesForMenzies.csv",
+#               predictedFileForEntire="C:/Users/x-man/Copy/R/Data/Ant-1.6/predictedDefectsUsingEntire.csv",
+#               dataPath="C:/Users/x-man/Copy/R/Data/Ant-1.6",
+#               BorderFlowClusterInfofile="C:/Users/x-man/Copy/R/Data/Ant-1.6/Ant-1.6-clusterInfo.csv",
+#               PcaAnalysisPath="C:/Users/x-man/Copy/R/Data/Ant-1.6/")
 
 #Camel..........
 
-sourcePath<-c(mainFile="C:/Users/x-man/Copy/R/Data/Camel-1.0/camel-1.0.csv",
-              predictedFile="C:/Users/x-man/Copy/R/Data/Camel-1.0/testDataWithResidualValuesForMenzies.csv",
-              predictedFileForEntire="C:/Users/x-man/Copy/R/Data/Camel-1.0/predictedDefectsUsingEntire.csv",
-              dataPath="C:/Users/x-man/Copy/R/Data/Camel-1.0",
-              BorderFlowfilePath="C:/Users/x-man/Copy/R/thesis/Borderflow/clusters",
-              PcaAnalysisPath="C:/Users/x-man/Copy/R/Data/Camel-1.0/")
+# sourcePath<-c(mainFile="C:/Users/x-man/Copy/R/Data/Camel-1.0/camel-1.0.csv",
+#               predictedFile="C:/Users/x-man/Copy/R/Data/Camel-1.0/testDataWithResidualValuesForMenzies.csv",
+#               predictedFileForEntire="C:/Users/x-man/Copy/R/Data/Camel-1.0/predictedDefectsUsingEntire.csv",
+#               dataPath="C:/Users/x-man/Copy/R/Data/Camel-1.0",
+#               BorderFlowfilePath="C:/Users/x-man/Copy/R/thesis/Borderflow/clusters",
+#               PcaAnalysisPath="C:/Users/x-man/Copy/R/Data/Camel-1.0/")
 #Xalan..........
 
-# sourcePath<-c(mainFile="C:/Users/x-man/Copy/R/Data/Xalan-2.7/xalan-2.7.csv",
-#               predictedFile="C:/Users/x-man/Copy/R/Data/Xalan-2.7/testDataWithResidualValuesForMenzies.csv",
-#               predictedFileForEntire="C:/Users/x-man/Copy/R/Data/Xalan-2.7/predictedDefectsUsingEntire.csv",
-#               dataPath="C:/Users/x-man/Copy/R/Data/Xalan-2.7",
-#               BorderFlowfilePath="C:/Users/x-man/Copy/R/thesis/Borderflow/clusters",
-#               PcaAnalysisPath="C:/Users/x-man/Copy/R/Data/Xalan-2.7/")
+sourcePath<-c(mainFile="C:/Users/x-man/Copy/R/Data/Xalan-2.6/xalan-2.6.csv",
+              predictedFile="C:/Users/x-man/Copy/R/Data/Xalan-2.6/testDataWithResidualValuesForMenzies.csv",
+              predictedFileForEntire="C:/Users/x-man/Copy/R/Data/Xalan-2.6/predictedDefectsUsingEntire.csv",
+              dataPath="C:/Users/x-man/Copy/R/Data/Xalan-2.6",
+              BorderFlowfilePath="C:/Users/x-man/Copy/R/thesis/Borderflow/clusters",
+              PcaAnalysisPath="C:/Users/x-man/Copy/R/Data/Xalan-2.6/")
 #Tomcat..........
 
 # sourcePath<-c(mainFile="C:/Users/x-man/Copy/R/Data/Tomcat/tomcat.csv",
