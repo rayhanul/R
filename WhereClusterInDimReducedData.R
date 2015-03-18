@@ -115,24 +115,27 @@ getPredictedDefects<-function(){
 	
 	dimReducedpredictedClustersList<-getPredictedCluster(position,dbDataTest)
 
-  numberOfClusters<-tail(sort(dimReducedpredictedClustersList[,3]),1)
-  predictedDefects<-c()
-  for(clster in 1: numberOfClusters){
+	numberOfClusters<-tail(sort(dimReducedpredictedClustersList[,3]),1)
+	predictedDefects<-c()
+	for(clster in 1: numberOfClusters){
   
-  mainTrainData<-getRealClusteredDataForTrainPredictionModel(dimReducedDataWithClusterInfo,clster)
-  testData<-getRealClusteredDataForTestPredictionModel(dimReducedpredictedClustersList,clster)
-  
- model<-lm(bug~wmc+loc+npm+cbo+lcom+rfc+noc+dit,mainTrainData)
+		mainTrainData<-getRealClusteredDataForTrainPredictionModel(dimReducedDataWithClusterInfo,clster)
+		testData<-getRealClusteredDataForTestPredictionModel(dimReducedpredictedClustersList,clster)
+		if(is.null(testData)==FALSE){
+			model<-lm(bug~wmc+loc+npm+cbo+lcom+rfc+noc+dit,mainTrainData)
  
- # writing model summary....................
- fileName<-paste("ModelSummaryForDimReducedWhereCluster",clster,sep="_")
- fileName<-paste(fileName,"csv",sep=".")
- writeModelSummary(model,sourcePath[['dataPath']],fileName)
- 
- pDefect<-predict(model, testData,interval="predict")
+			 # writing model summary....................
+			 fileName<-paste("ModelSummaryForDimReducedWhereCluster",clster,sep="_")
+			 fileName<-paste(fileName,"csv",sep=".")
+			 writeModelSummary(model,sourcePath[['dataPath']],fileName)
+			 
+			 pDefect<-predict(model, testData,interval="predict")
 
- predictedDefects<-rbind(predictedDefects,pDefect)
-  }
+			 predictedDefects<-rbind(predictedDefects,pDefect)
+  
+		}
+
+	}
 
  combinedData<-getCombinedTestDataWithResidualValues(splittedData$testset,predictedDefects,"testDataWithResidualValuesForDimReducedWhereCluster.csv")
  writeDataFrameTo(combinedData,sourcePath[['dataPath']],"testDataWithResidualValuesForDimReducedWhereCluster.csv")

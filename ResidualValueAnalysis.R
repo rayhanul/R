@@ -24,6 +24,10 @@ computeResidualValue<-function(predictedFileName,ResidualValuesFileName){
 		allResidualValues<-rbind(allResidualValues,rowResidualValue)
 	}
 	
+  #..........
+	allResidualValues<-data.frame(allResidualValues)
+	names(allResidualValues)<-c("resVal","id")
+  
 	writeDataFrameWithOutRowIdColumn(allResidualValues,sourcePath[['dataPath']],ResidualValuesFileName)
 	return(allResidualValues)
 }

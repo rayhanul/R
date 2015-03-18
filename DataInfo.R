@@ -18,12 +18,12 @@
 
 #Ant..........
 
-# sourcePath<-c(mainFile="C:/Users/x-man/Copy/R/Data/Ant-1.6/ant-1.6.csv",
-#               predictedFile="C:/Users/x-man/Copy/R/Data/Ant-1.6/testDataWithResidualValuesForMenzies.csv",
-#               predictedFileForEntire="C:/Users/x-man/Copy/R/Data/Ant-1.6/predictedDefectsUsingEntire.csv",
-#               dataPath="C:/Users/x-man/Copy/R/Data/Ant-1.6",
-#               BorderFlowClusterInfofile="C:/Users/x-man/Copy/R/Data/Ant-1.6/Ant-1.6-clusterInfo.csv",
-#               PcaAnalysisPath="C:/Users/x-man/Copy/R/Data/Ant-1.6/")
+sourcePath<-c(mainFile="C:/Users/x-man/Copy/R/Data/Ant-1.3/ant-1.3.csv",
+              predictedFile="C:/Users/x-man/Copy/R/Data/Ant-1.3/testDataWithResidualValuesForMenzies.csv",
+              predictedFileForEntire="C:/Users/x-man/Copy/R/Data/Ant-1.3/predictedDefectsUsingEntire.csv",
+              dataPath="C:/Users/x-man/Copy/R/Data/Ant-1.3",
+              BorderFlowClusterInfofile="C:/Users/x-man/Copy/R/Data/Ant-1.3/Ant-1.3-clusterInfo.csv",
+              PcaAnalysisPath="C:/Users/x-man/Copy/R/Data/Ant-1.3/")
 
 #Camel..........
 
@@ -35,12 +35,12 @@
 #               PcaAnalysisPath="C:/Users/x-man/Copy/R/Data/Camel-1.0/")
 #Xalan..........
 
-sourcePath<-c(mainFile="C:/Users/x-man/Copy/R/Data/Xalan-2.6/xalan-2.6.csv",
-              predictedFile="C:/Users/x-man/Copy/R/Data/Xalan-2.6/testDataWithResidualValuesForMenzies.csv",
-              predictedFileForEntire="C:/Users/x-man/Copy/R/Data/Xalan-2.6/predictedDefectsUsingEntire.csv",
-              dataPath="C:/Users/x-man/Copy/R/Data/Xalan-2.6",
-              BorderFlowfilePath="C:/Users/x-man/Copy/R/thesis/Borderflow/clusters",
-              PcaAnalysisPath="C:/Users/x-man/Copy/R/Data/Xalan-2.6/")
+# sourcePath<-c(mainFile="C:/Users/x-man/Copy/R/Data/Xalan-2.6/xalan-2.6.csv",
+#               predictedFile="C:/Users/x-man/Copy/R/Data/Xalan-2.6/testDataWithResidualValuesForMenzies.csv",
+#               predictedFileForEntire="C:/Users/x-man/Copy/R/Data/Xalan-2.6/predictedDefectsUsingEntire.csv",
+#               dataPath="C:/Users/x-man/Copy/R/Data/Xalan-2.6",
+#               BorderFlowfilePath="C:/Users/x-man/Copy/R/thesis/Borderflow/clusters",
+#               PcaAnalysisPath="C:/Users/x-man/Copy/R/Data/Xalan-2.6/")
 #Tomcat..........
 
 # sourcePath<-c(mainFile="C:/Users/x-man/Copy/R/Data/Tomcat/tomcat.csv",
@@ -53,10 +53,10 @@ sourcePath<-c(mainFile="C:/Users/x-man/Copy/R/Data/Xalan-2.6/xalan-2.6.csv",
 #poi.........................
 
 # sourcePath<-c(mainFile="C:/Users/x-man/Copy/R/Data/Poi-3.0/poi-3.0.csv",
-# predictedFile="C:/Users/x-man/Copy/R/Data/Poi-3.0/testDataWithResidualValues.csv",
-# predictedFileForEntire="C:/Users/x-man/Copy/R/Data/Poi-3.0/predictedDefectsUsingEntire.csv",
-# dataPath="C:/Users/x-man/Copy/R/Data/Poi-3.0",
-# BorderFlowfilePath="C:/Users/x-man/Copy/R/thesis/Borderflow/clusters")
+#               predictedFile="C:/Users/x-man/Copy/R/Data/Poi-3.0/testDataWithResidualValues.csv",
+#               predictedFileForEntire="C:/Users/x-man/Copy/R/Data/Poi-3.0/predictedDefectsUsingEntire.csv",
+#               dataPath="C:/Users/x-man/Copy/R/Data/Poi-3.0",
+#               BorderFlowfilePath="C:/Users/x-man/Copy/R/thesis/Borderflow/clusters")
 
 
 # lucence..............

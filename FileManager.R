@@ -1,6 +1,5 @@
 
 writeDataFrameTo<-function(data,directory,fileName){
-   names(data)<-c("resVal","id")
    filePath<-paste(directory,fileName,sep="/")
    write.csv(data, file =filePath)
 }

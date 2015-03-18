@@ -18,7 +18,7 @@ predictDefect<-function(){
 	#eps<- getEpsValueFromAverageDistanceOfEachPoint(dbData)
 	#eps<-getEpsValue(csvData)
 	eps<-getEpsValueFromInterceptFromSelectingEach(csvData)
-	#eps<-3.856
+	eps<-3.856
 	cluster<-getClustersUsingDbScan(dbData,eps)
 	numberOfMainClusters<-tail(sort(cluster$cluster),1)
 	if(numberOfMainClusters!=0){
@@ -59,23 +59,26 @@ predictDefect<-function(){
 				residualValues<-rbind(residualValues,prdtedDefect)
 			}
 		#	}
-
+		combinedData<-	getCombinedTestDataWithResidualValues(testData,residualValues,"testDataWithResidualValuesForDbScan.csv")
+		writeDataFrameTo(combinedData,sourcePath[['dataPath']],"testDataWithResidualValuesForDbScan.csv")
+		resFile<-paste("ResidualValForDbScan",i,sep="_")
+		resFile<-paste(resFile,"csv",sep=".")
+		computeResidualValue("testDataWithResidualValuesForDbScan.csv",resFile)
 		}
-	}else{
-		predictionModel <- lm(bug~wmc+loc+npm+cbo+lcom+rfc+noc+dit,data$trainset)
-		
-		# writing model summary....................
-		fileName<-paste("ModelSummaryForDBScan","csv",sep=".")
-		writeModelSummary(predictionModel,sourcePath[['dataPath']],fileName)
-    
-    
-		prdtedDefect<-predict(predictionModel,data$testset,interval="predict")
-		#adding cluster info...
-		residualValues<-addingClusterInfoToData(prdtedDefect,jointClusterIds,0)
 	}
-	combinedData<-	getCombinedTestDataWithResidualValues(testData,residualValues,"testDataWithResidualValuesForDbScan.csv")
-	writeDataFrameTo(combinedData,sourcePath[['dataPath']],"testDataWithResidualValuesForDbScan.csv")
-	computeResidualValue("testDataWithResidualValuesForDbScan.csv","ResidualValForDbScan.csv")
+#   else{
+# 		predictionModel <- lm(bug~wmc+loc+npm+cbo+lcom+rfc+noc+dit,data$trainset)
+# 		
+# 		# writing model summary....................
+# 		fileName<-paste("ModelSummaryForDBScan","csv",sep=".")
+# 		writeModelSummary(predictionModel,sourcePath[['dataPath']],fileName)
+#     
+#     
+# 		prdtedDefect<-predict(predictionModel,data$testset,interval="predict")
+# 		#adding cluster info...
+# 		residualValues<-addingClusterInfoToData(prdtedDefect,jointClusterIds,0)
+# 	}
+	
   return(combinedData)
 }
 

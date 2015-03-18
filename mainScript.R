@@ -24,6 +24,15 @@ predictDefect()
 rm(list=ls())
 
 
+#.............where.....................
+
+source('C:/Users/x-man/Copy/R/Defect_Prediction/WhereCLusterInDimReducedData.R')
+
+getPredictedDefects()
+
+rm(list=ls())
+
+
 #.............BorderFlow.............
 
 source('C:/Users/x-man/Copy/R/Defect_Prediction/BorderFlowScript.R')
